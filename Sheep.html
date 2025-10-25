@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheep Sound</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #fff8e1;
+      padding: 40px;
+    }
+    h2 { color: #444; }
+    button {
+      margin: 10px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: none;
+      background-color: #ffcc80;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #ffb74d; }
+  </style>
+</head>
+<body>
+  <audio id="catSound" src="sounds/Sheep.mp3"></audio>
+
+  <button onclick="document.getElementById('catSound').play()">Play Sound</button>
+  <button onclick="document.getElementById('catSound').pause()">Pause Sound</button>
+</body>
+</html>
