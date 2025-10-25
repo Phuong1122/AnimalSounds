@@ -1,33 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monkey Sound</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cat</title>
+
+  <!-- Font Awesome icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
-      background-color: #fff8e1;
-      padding: 40px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #ffcc80, #fff8e1);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
-    h2 { color: #444; }
-    button {
-      margin: 10px;
-      padding: 12px 24px;
-      border-radius: 12px;
+
+    .player-container {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 90%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .album-art {
+      width: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .control-btn {
+      background-color: #ffb74d;
+      color: white;
       border: none;
-      background-color: #ffcc80;
-      font-size: 16px;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      font-size: 28px;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
-    button:hover { background-color: #ffb74d; }
+
+    .control-btn:hover {
+      background-color: #ff9800;
+      transform: scale(1.1);
+    }
   </style>
 </head>
-<body>
-  <audio id="catSound" src="Sounds/Monkey.mp3"></audio>
 
-  <button onclick="document.getElementById('catSound').play()">Play Sound</button>
-  <button onclick="document.getElementById('catSound').pause()">Pause Sound</button>
+<body>
+  <div class="player-container">
+    <img
+      src="Images/Monkey.jpg"
+      alt="Bird"
+      class="album-art"
+    />
+
+    <button class="control-btn" id="playPauseBtn">
+      <i class="fa-solid fa-play"></i>
+    </button>
+  </div>
+
+  <audio id="tigerSound" src="Sounds/Monkey.mp3"></audio>
+
+  <script>
+    const sound = document.getElementById('tigerSound');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const icon = playPauseBtn.querySelector('i');
+
+    playPauseBtn.addEventListener('click', () => {
+      if (sound.paused) {
+        sound.play();
+        icon.classList.replace('fa-play', 'fa-pause');
+      } else {
+        sound.pause();
+        icon.classList.replace('fa-pause', 'fa-play');
+      }
+    });
+
+    sound.addEventListener('ended', () => {
+      icon.classList.replace('fa-pause', 'fa-play');
+    });
+  </script>
 </body>
 </html>
